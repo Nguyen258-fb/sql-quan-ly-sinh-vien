@@ -1,0 +1,14 @@
+USE QuanLySinhVien;
+SELECT S.SubId, S.SubName, S.Credit, M.Mark 
+FROM Subject S 
+JOIN Mark M ON S.SubId = M.SubId 
+WHERE M.Mark = (SELECT MAX(Mark) FROM Mark);
+SELECT S.SubId, S.SubName, S.Credit, M.Mark 
+FROM Subject S 
+JOIN Mark M ON S.SubId = M.SubId 
+WHERE M.Mark = (SELECT MAX(Mark) FROM Mark);
+SELECT St.StudentId, St.StudentName, AVG(M.Mark) AS AverageMark
+FROM Student St
+JOIN Mark M ON St.StudentId = M.StudentId
+GROUP BY St.StudentId, St.StudentName
+ORDER BY AverageMark DESC;
